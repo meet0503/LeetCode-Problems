@@ -21,7 +21,7 @@ public:
         }
         string ans="";
         int j=0;
-        while(j<elem){
+        while(j<s.size()){
             int I_max = findmaxIndex(s_hash);
             char ch = I_max;
             for(int i=s_hash[I_max]; i>0; i--){
