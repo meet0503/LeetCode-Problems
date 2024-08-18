@@ -4,21 +4,14 @@ public:
         set<char> charSet;
         int maxLength = 0;
         int start = 0;
-
+        int hash[256]={0};
         for (int i = 0; i < s.size(); i++) {
-            char ch = s[i];
-
-            // If character is already in the set, remove characters from the start
-            while (charSet.find(ch) != charSet.end()) {
-                charSet.erase(s[start]);
+            hash[s[i]]++;
+            while(hash[s[i]]>1){
+                hash[s[start]]--;
                 start++;
             }
-
-            // Insert the current character into the set
-            charSet.insert(ch);
-
-            // Update the maximum length
-            maxLength = max(maxLength, i - start + 1);
+            maxLength = max(maxLength, i - start+1);
         }
 
         return maxLength;
